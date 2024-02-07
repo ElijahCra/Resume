@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Fade, Slide } from "react-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 
 class Contact extends Component {
   render() {
@@ -30,7 +30,7 @@ class Contact extends Component {
         </Fade>
 
         <div className="row">
-          <Slide left duration={1000}>
+          <Slide left duration={200}>
             <div className="eight columns">
               <form action="" method="post" id="contactForm" name="contactForm">
                 <fieldset>

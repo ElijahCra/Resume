@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ParticlesBg from "particles-bg";
-import Fade from "react-reveal";
+import Fade from "react-awesome-reveal";
 
 class Header extends Component {
   render() {
@@ -42,7 +42,7 @@ class Header extends Component {
               </a>
             </li>
 
-            <li>
+            {/*<li>
               <a className="smoothscroll" href="#portfolio">
                 Works
               </a>
@@ -52,7 +52,7 @@ class Header extends Component {
               <a className="smoothscroll" href="#contact">
                 Contact
               </a>
-            </li>
+            </li>*/}
           </ul>
         </nav>
 
