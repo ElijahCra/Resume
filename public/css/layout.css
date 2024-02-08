@@ -182,7 +182,7 @@ ul#nav li.current a { color: #fe6928; }
 /* ------------------------------------------------------------------ */
 
 #about {
-   background: #000524;
+   background: #2d4450;
    padding-top: 96px;
    padding-bottom: 66px;
    overflow: hidden;
@@ -1020,5 +1020,5 @@ footer .social-links li:first-child { margin-left: 0; }
    background-color: #1abc9c !important;
 }
 .github-btn{
-   background-color: #34495e !important;
+   background-color: #2d4450 !important;
 }
