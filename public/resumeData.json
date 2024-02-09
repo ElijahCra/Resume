@@ -58,25 +58,42 @@
         "company":"Aflac",
         "title":"API Integrations Developer",
         "years":"January 2023 - Present",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "description": [
+          { "item": "Item 1"},
+          { "item": "Item 2"},
+          { "item": "Item 3"}
+        ]
       },
       {
         "company":"Aflac",
         "title":"Dynamics 365 Developer",
         "years":"September 2022 - December 2022",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "description": [
+          { "item": "Item 1"},
+          { "item": "Item 2"},
+          { "item": "Item 3"}
+        ]
       },
       {
         "company":"UF Center for Undergraduate Research",
         "title":"Admin Assistant",
         "years":"August 2019 - May 2021",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "description": [
+          { "item": "Item 1"},
+          { "item": "Item 2"},
+          { "item": "Item 3"}
+        ]
       },
       {
         "company":"Southern Environmental Inc.",
         "title":"Assistant Engineer",
         "years":"May 2019 - August 2019",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "description": [
+          { "item": "Item 1"},
+          { "item": "Item 2"},
+          { "item": "Item 3"},
+          { "item": "Item 4"}
+        ]
       }
     ],
     "skills":[
