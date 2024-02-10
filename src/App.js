@@ -43,14 +43,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
-        <Resume data={this.state.resumeData.resume} />
-        {/*<Portfolio data={this.state.resumeData.portfolio} />
-        <Contact data={this.state.resumeData.main} />
-        <Footer data={this.state.resumeData.main} />*/}
-      </div>
+        <div className="App">
+          <Header data={this.state.resumeData.main} />
+          <About data={this.state.resumeData.main} />
+          {this.state.resumeData.resume ? ( // Check if resume data exists
+              <Resume data={this.state.resumeData.resume} />
+          ) : (
+              <div>Loading Resume...</div> // Or display a loading indicator
+          )}
+          {/* ... rest of your components */}
+        </div>
     );
   }
 }

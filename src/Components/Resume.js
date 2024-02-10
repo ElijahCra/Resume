@@ -2,6 +2,26 @@ import React, { Component } from "react";
 import Slide from "react-awesome-reveal";
 
 class Resume extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            hoveredItems: this.props.data.work.map((workItem) =>
+                workItem.description.map(() => false) // Create nested array for each work item's descriptions
+            )
+        };
+    }
+
+    handleMouseEnter = (workIndex, itemIndex) => {
+        this.setState((prevState) => {
+            const newHoveredItems = [...prevState.hoveredItems];
+            newHoveredItems[workIndex][itemIndex] = true;
+            return { hoveredItems: newHoveredItems };
+        });
+    };
+
+    handleMouseLeave = () => {
+        //this.setState({ hoveredWorkItem: null });
+    };
   getRandomColor() {
     let letters = "0123456789ABCDEF";
     let color = "#";
@@ -28,37 +48,46 @@ class Resume extends Component {
       );
     });
 
-    const work = this.props.data.work.map(function (work) {
+      const work = this.props.data.work.map((work, workIndex) => {
+          return (
+              <div
+                  key={work.company}
+              >
+                  <h3>{work.company}</h3>
+                  <p className="info">
+                      {work.title}
+                      <span>&bull;</span> <em className="date">{work.years}</em>
+                  </p>
+
+                  <ul>
+                      {work.description.map((item, itemIndex) => (
+                          <li
+                              key={itemIndex}
+                              onMouseEnter={() => this.handleMouseEnter(workIndex, itemIndex)}
+                              onMouseLeave={() => this.handleMouseLeave(workIndex, itemIndex)}
+                          >
+                              {this.state.hoveredItems[workIndex][itemIndex] ? item.hoverItem : item.item}
+                          </li>
+                      ))}
+                  </ul>
+              </div>
+          );
+      });
+
+      const skills = this.props.data.skills.map((skills) => {
+          const backgroundColor = this.getRandomColor();
+          const className = "bar-expand " + skills.name.toLowerCase();
+          const width = skills.level;
+
+          return (
+              <li key={skills.name}>
+                  <span style={{width, backgroundColor}} className={className}></span>
+                  <em>{skills.name}</em>
+              </li>
+          );
+      });
+
       return (
-        <div key={work.company}>
-          <h3>{work.company}</h3>
-          <p className="info">
-            {work.title}
-            <span>&bull;</span> <em className="date">{work.years}</em>
-          </p>
-          <ul> {/* Using a <ul> for better structure */}
-            {work.description.map((item, index) => (
-                <li key={index}>{item.item}</li>
-            ))}
-          </ul>
-        </div>
-      );
-    });
-
-    const skills = this.props.data.skills.map((skills) => {
-      const backgroundColor = this.getRandomColor();
-      const className = "bar-expand " + skills.name.toLowerCase();
-      const width = skills.level;
-
-      return (
-        <li key={skills.name}>
-          <span style={{ width, backgroundColor }} className={className}></span>
-          <em>{skills.name}</em>
-        </li>
-      );
-    });
-
-    return (
       <section id="resume">
         <Slide left duration={300}>
           <div className="row education">

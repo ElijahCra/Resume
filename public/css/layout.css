@@ -261,6 +261,15 @@ ul#nav li.current a { color: #fe6928; }
    padding-bottom: 24px;
    border-bottom: 1px solid #E8E8E8;
 }
+
+.work ul li {
+    transition: all 5.3s ease-in-out; /* Add a transition */
+}
+
+.work ul li:hover {
+    /*  Your existing hover styles, e.g., changing color */
+}
+
 #resume .info {
    font: 16px/24px 'librebaskerville-italic', serif;
    color: #6E7881;
