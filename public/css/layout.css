@@ -1,9 +1,5 @@
 /*
-=====================================================================
-*   Ceevee v1.0 Layout Stylesheet
-*   url: styleshout.com
-*   03-18-2014
-=====================================================================
+
 
    TOC:
    a. General Styles
@@ -15,8 +11,7 @@
    g. Testimonials Section
    h. Contact Section
    i. Footer
-
-===================================================================== */
+*/
 
 /* ------------------------------------------------------------------ */
 /* a. General Styles
@@ -262,13 +257,31 @@ ul#nav li.current a { color: #fe6928; }
    border-bottom: 1px solid #E8E8E8;
 }
 
-.work ul li {
-    transition: all 5.3s ease-in-out; /* Add a transition */
+
+.work li {
+   position: relative; /* Keep this for establishing positioned context */
 }
 
-.work ul li:hover {
-    /*  Your existing hover styles, e.g., changing color */
+
+.item-transition-enter {
+    opacity: 0;
+   position: absolute;
+   top: 0;
+    /* You can still keep the spacing */
+    max-height: 0px;
+
 }
+.item-transition-enter-active {
+
+    opacity: 1;
+   transition: opacity 300ms ease-in-out; /* Keep as is */
+    max-height: 100px;  /* Example Height - Set this according to your expanded content */
+}
+.item-transition-enter-done {
+
+}
+
+
 
 #resume .info {
    font: 16px/24px 'librebaskerville-italic', serif;

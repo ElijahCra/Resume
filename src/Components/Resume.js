@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Slide from "react-awesome-reveal";
+import { CSSTransition } from "react-transition-group";
+
 
 class Resume extends Component {
     constructor(props) {
@@ -19,9 +21,7 @@ class Resume extends Component {
         });
     };
 
-    handleMouseLeave = () => {
-        //this.setState({ hoveredWorkItem: null });
-    };
+
   getRandomColor() {
     let letters = "0123456789ABCDEF";
     let color = "#";
@@ -50,9 +50,7 @@ class Resume extends Component {
 
       const work = this.props.data.work.map((work, workIndex) => {
           return (
-              <div
-                  key={work.company}
-              >
+              <div key={work.company}>
                   <h3>{work.company}</h3>
                   <p className="info">
                       {work.title}
@@ -61,12 +59,17 @@ class Resume extends Component {
 
                   <ul>
                       {work.description.map((item, itemIndex) => (
-                          <li
-                              key={itemIndex}
-                              onMouseEnter={() => this.handleMouseEnter(workIndex, itemIndex)}
-                              onMouseLeave={() => this.handleMouseLeave(workIndex, itemIndex)}
-                          >
-                              {this.state.hoveredItems[workIndex][itemIndex] ? item.hoverItem : item.item}
+                          <li key={itemIndex} onMouseEnter={() => this.handleMouseEnter(workIndex, itemIndex)}>
+                              <div className="hover-content">  {/* New Container */}
+                                  <span>{item.item}</span>
+                                  <CSSTransition
+                                      in={this.state.hoveredItems[workIndex][itemIndex]}
+                                      timeout={300}
+                                      classNames="item-transition"
+                                  >
+                                      <span className="item-transition-enter">{item.hoverItem}</span>
+                                  </CSSTransition>
+                              </div>
                           </li>
                       ))}
                   </ul>
