@@ -1,25 +1,44 @@
 import React, { Component } from "react";
 import Slide from "react-awesome-reveal";
-import { CSSTransition } from "react-transition-group";
+//import { CSSTransition } from "react-transition-group";
 
 
 class Resume extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hoveredItems: this.props.data.work.map((workItem) =>
-                workItem.description.map(() => false) // Create nested array for each work item's descriptions
-            )
+            expandedWorkItems: [], // Track expanded work items by index
+            allExpanded: false
         };
     }
 
-    handleMouseEnter = (workIndex, itemIndex) => {
-        this.setState((prevState) => {
-            const newHoveredItems = [...prevState.hoveredItems];
-            newHoveredItems[workIndex][itemIndex] = true;
-            return { hoveredItems: newHoveredItems };
+    handleExpandAll = () => {
+        const newExpandedWorkItems = this.props.data.work.map((_, index) => index); // Expand all
+        this.setState({
+            expandedWorkItems: newExpandedWorkItems,
+            allExpanded: true
         });
     };
+
+    handleCloseAll = () => {
+        this.setState({
+            expandedWorkItems: [], // Collapse all
+            allExpanded: false
+        });
+    };
+
+    handleToggleWorkItem = (workIndex) => {
+        this.setState(prevState => {
+            const { expandedWorkItems } = prevState;
+            // Toggle presence of the index
+            const indexExists = expandedWorkItems.includes(workIndex);
+            return {
+                expandedWorkItems: indexExists
+                    ? expandedWorkItems.filter(i => i !== workIndex) // Remove
+                    : [...expandedWorkItems, workIndex] // Add
+            };
+        });
+    }
 
 
   getRandomColor() {
@@ -49,6 +68,8 @@ class Resume extends Component {
     });
 
       const work = this.props.data.work.map((work, workIndex) => {
+          const isExpanded = this.state.expandedWorkItems.includes(workIndex) || this.state.allExpanded;
+
           return (
               <div key={work.company}>
                   <h3>{work.company}</h3>
@@ -57,19 +78,14 @@ class Resume extends Component {
                       <span>&bull;</span> <em className="date">{work.years}</em>
                   </p>
 
-                  <ul>
+                  <button onClick={() => this.handleToggleWorkItem(workIndex)}>
+                      {isExpanded ? 'Collapse' : 'Expand'}
+                  </button>
+
+                  <ul style={{ display: isExpanded ? 'block' : 'none' }}>
                       {work.description.map((item, itemIndex) => (
-                          <li key={itemIndex} onMouseEnter={() => this.handleMouseEnter(workIndex, itemIndex)}>
-                              <div className="hover-content">  {/* New Container */}
-                                  <span>{item.item}</span>
-                                  <CSSTransition
-                                      in={this.state.hoveredItems[workIndex][itemIndex]}
-                                      timeout={300}
-                                      classNames="item-transition"
-                                  >
-                                      <span className="item-transition-enter">{item.hoverItem}</span>
-                                  </CSSTransition>
-                              </div>
+                          <li key={itemIndex}>
+                              <span>{item.item}</span>
                           </li>
                       ))}
                   </ul>
@@ -116,13 +132,17 @@ class Resume extends Component {
               </h1>
             </div>
 
-            <div className="nine columns main-col">{work}</div>
+              <div className="nine columns main-col">
+                  <button onClick={this.handleExpandAll}>Expand All</button>
+                  <button onClick={this.handleCloseAll}>Close All</button>
+                  {work}
+              </div>
           </div>
         </Slide>
 
-        <Slide left duration={300}>
-          <div className="row skill">
-            <div className="three columns header-col">
+          <Slide left duration={300}>
+              <div className="row skill">
+                  <div className="three columns header-col">
               <h1>
                 <span>Skills</span>
               </h1>
