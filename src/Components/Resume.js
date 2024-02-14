@@ -7,13 +7,13 @@ class Resume extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expandedWorkItems: [], // Track expanded work items by index
+            expandedWorkItems: [],
             allExpanded: false
         };
     }
 
     handleExpandAll = () => {
-        const newExpandedWorkItems = this.props.data.work.map((_, index) => index); // Expand all
+        const newExpandedWorkItems = this.props.data.work.map((_, index) => index);
         this.setState({
             expandedWorkItems: newExpandedWorkItems,
             allExpanded: true
@@ -22,23 +22,22 @@ class Resume extends Component {
 
     handleCloseAll = () => {
         this.setState({
-            expandedWorkItems: [], // Collapse all
+            expandedWorkItems: [],
             allExpanded: false
         });
     };
 
-    handleToggleWorkItem = (workIndex) => {
-        this.setState(prevState => {
-            const { expandedWorkItems } = prevState;
-            // Toggle presence of the index
-            const indexExists = expandedWorkItems.includes(workIndex);
-            return {
-                expandedWorkItems: indexExists
-                    ? expandedWorkItems.filter(i => i !== workIndex) // Remove
-                    : [...expandedWorkItems, workIndex] // Add
-            };
-        });
-    }
+    handleMouseEnter = (workIndex) => {
+        this.setState(prevState => ({
+            expandedWorkItems: [...prevState.expandedWorkItems, workIndex]
+        }));
+    };
+
+    handleMouseLeave = (workIndex) => {
+        this.setState(prevState => ({
+            expandedWorkItems: prevState.expandedWorkItems.filter(index => index !== workIndex)
+        }));
+    };
 
 
   getRandomColor() {
@@ -71,16 +70,16 @@ class Resume extends Component {
           const isExpanded = this.state.expandedWorkItems.includes(workIndex) || this.state.allExpanded;
 
           return (
-              <div key={work.company}>
+              <div
+                  key={work.company}
+                  onMouseEnter={() => this.handleMouseEnter(workIndex)}
+                  // onMouseLeave={this.handleMouseLeave} // Removed
+              >
                   <h3>{work.company}</h3>
                   <p className="info">
                       {work.title}
                       <span>&bull;</span> <em className="date">{work.years}</em>
                   </p>
-
-                  <button onClick={() => this.handleToggleWorkItem(workIndex)}>
-                      {isExpanded ? 'Collapse' : 'Expand'}
-                  </button>
 
                   <ul style={{ display: isExpanded ? 'block' : 'none' }}>
                       {work.description.map((item, itemIndex) => (
