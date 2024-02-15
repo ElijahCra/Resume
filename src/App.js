@@ -15,7 +15,6 @@ class App extends Component {
     this.state = {
       foo: "bar",
       resumeData: {},
-      isNavOpaque: false
     };
 
     ReactGA.initialize("UA-110570651-1");
@@ -39,18 +38,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getResumeData();
-    window.addEventListener('scroll', this.handleScroll);
-  }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll = () => {
-    const mainPageBottom = $('#main-page').offset().top + $('#main-page').height();
-    const isScrolledPast = window.scrollY >= mainPageBottom;
-
-    this.setState({ isNavOpaque: isScrolledPast });
   }
 
 
