@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactGA from "react-ga";
 import $ from "jquery";
-import "./App.css";
 import Header from "./Components/Header";
 
 import About from "./Components/About";
@@ -15,7 +14,8 @@ class App extends Component {
     super(props);
     this.state = {
       foo: "bar",
-      resumeData: {}
+      resumeData: {},
+      isNavOpaque: false
     };
 
     ReactGA.initialize("UA-110570651-1");
@@ -39,7 +39,20 @@ class App extends Component {
 
   componentDidMount() {
     this.getResumeData();
+    window.addEventListener('scroll', this.handleScroll);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const mainPageBottom = $('#main-page').offset().top + $('#main-page').height();
+    const isScrolledPast = window.scrollY >= mainPageBottom;
+
+    this.setState({ isNavOpaque: isScrolledPast });
+  }
+
 
   render() {
     return (

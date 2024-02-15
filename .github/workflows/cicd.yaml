@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Needed for OIDC
+      id-token: write  # OIDC
       contents: read
 
     steps:
@@ -20,12 +20,12 @@ jobs:
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::195391091170:role/GithubS3Access #change to reflect your IAM role’s ARN
+          role-to-assume: ${{ secrets.AWS_ARN }}
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: us-east-1
 
       - name: Sync to S3
-        run: aws s3 sync ./build/ s3://elijahcrainsite # Change this to your bucket name
+        run: aws s3 sync ./build/ s3://elijahcrainsite --delete
 
       - name: Invalidate CloudFront (Optional)
-        run: aws cloudfront create-invalidation --distribution-id your-cloudfront-id --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id https://d1tqfkbifi0ego.cloudfront.net --paths "/*"
