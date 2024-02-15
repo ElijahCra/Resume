@@ -27,5 +27,5 @@ jobs:
       - name: Sync to S3
         run: aws s3 sync ./build/ s3://elijahcrainsite --delete
 
-      - name: Invalidate CloudFront (Optional)
-        run: aws cloudfront create-invalidation --distribution-id https://d1tqfkbifi0ego.cloudfront.net --paths "/*"
+      - name: Invalidate CloudFront
+        run: aws cloudfront create-invalidation --distribution-id EAD7YE5HU5HKW --paths "/*"
