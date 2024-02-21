@@ -1,13 +1,14 @@
 {
   "main": {
     "name":"Elijah Crain",
-    "description":"I am a web development engineer and I use react and vue.js to develop pages. This project is a resume template that can be used as the project home page or resume page",
+    "description":"I am a software engineer and this is my website. I have a passion for software, mechanical engineering, robotics, and 3D printing",
     "image":"profilepic.jpg",
     "bio":"Use this bio section as your way of describing yourself and saying what you do, what technologies you like to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing in.",
     "contactmessage":"Here is where you should write your message to readers to have them get in contact with you.",
     "email": "elijah.b.crain@gmail.com",
     "phone": "850-776-7388",
     "github":"https://github.com/ElijahCra",
+    "linkedin": "https://linkedin.com/in/elijah-crain",
     "project":"https://github.com/ElijahCra/ResumeReact",
     "address":{
       "city":"Gainesville,",
@@ -59,29 +60,29 @@
         "title":"API Integrations Developer",
         "years":"January 2023 - Present",
         "description": [
-          { "item": "Item 1", "hoverItem": "Designed: Collaborated with multiple teams to create one a unified data model for microservices, aided in design of the overall architecture of  interactions between services, implemented OpenAPI 3.0 spec."},
-          { "item": "Item 2", "hoverItem": "Hover content for Item 2"},
-          { "item": "Item 3", "hoverItem": "Hover content for Item 3"}
+          { "item": "Collaborated with multiple teams to develop data model and establish micro-service architecture for a streamlined enrollment process." },
+          { "item": "Developed Spring Boot applications with OpenAPI 3.0 spec to migrate and transform data for frontend and database integration (MongoDB, DynamoDB, MSSQL) using REST and lombok" },
+          { "item": "Created Kafka (MSK) topics to enable message posting and consumption, utilizing Kafka’s distributed partition architecture for scalability and fault-proof communication. Achieved 99.9% message delivery success rate even during peak loads of over 100,000 requests daily." },
+          { "item": "Upgraded legacy REST and SOAP APIs by removing’ unnecessary data layer and consolidated logic into frontend API, reducing API response time by 65% and server usage by 35%."},
+          { "item": "Updated CI/CD to containerize services for Kubernetes cluster, created a comprehensive JUnit test suite for unit and integration testing providing 90% code coverage"}
         ]
       },
       {
         "company":"Aflac",
-        "title":"Dynamics 365 Developer",
+        "title":"CRM Developer ",
         "years":"September 2022 - December 2022",
         "description": [
-          { "item": "Item 1", "hoverItem": "Hover content for Item 1"},
-          { "item": "Item 2", "hoverItem": "Hover content for Item 2"},
-          { "item": "Item 3", "hoverItem": "Hover content for Item 3"}
+          { "item": "Built console application to aggregate updates from multiple sources to MSSQL database for sales broker usage in Dynamics 365. Automatically updated records based on updates in a source of truth database. Utilized stored procedures to reduce runtime by 45%." },
+          { "item": "Optimized SQL search by removing unnecessary data selections. Decreased operation time by 55% and memory usage by 40%"}
         ]
       },
       {
         "company":"UF Center for Undergraduate Research",
-        "title":"Admin Assistant",
+        "title":"Administrative Assistant ",
         "years":"August 2019 - May 2021",
         "description": [
-          { "item": "Item 1", "hoverItem": "Hover content for Item 1"},
-          { "item": "Item 2", "hoverItem": "Hover content for Item 2"},
-          { "item": "Item 3", "hoverItem": "Hover content for Item 3"}
+          { "item": "Automated data analysis using Python to load data from Qualtrics survey platform and perform statistical analysis with Pandas to compare the success of different programs. Generated interactivereports using generated data and Jupyter Notebook."},
+          { "item": "Built an iOS app that mapped research posters at the UF Undergraduate Research Symposium, an event that hosted over 200 presenters and 500 attendees yearly. Significantly reduced paper use."}
         ]
       },
       {
@@ -89,13 +90,27 @@
         "title":"Assistant Engineer",
         "years":"May 2019 - August 2019",
         "description": [
-          { "item": "Item 1", "hoverItem": "Hover content for Item 1"},
-          { "item": "Item 2", "hoverItem": "Hover content for Item 2"},
-          { "item": "Item 3", "hoverItem": "Hover content for Item 3"},
-          { "item": "Item 4", "hoverItem": "Hover content for Item 4"}
+          { "item": "Increased particle uptake in wet electrostatic precipitators by 30% using computational fluid dynamics simulations to develop an optimal hole pattern for irrigation with varying pressures."},
+          { "item": "Analyzed flow distribution and particle uptake data in MATLAB to identify and address performance bottlenecks and presented recommendations to the design team."}
         ]
       }
     ],
+    "projects":[
+      {
+        "title":"CFR Poker Bot",
+        "description": [
+          { "item": "Created implementation of Counter-Factual Regret Minimization algorithm in C++ which develops an optimal strategy for Poker over multiple iterations."},
+          { "item": "Implemented Monte Carlo sampling to improve training time and increase the maximum possible game size for calculation. Represented game tree as a state machine with singletons for game states"},
+          { "item": "Created unit testing Gtest to verify algorithm correctness and tracked performance using Google\nbenchmark. For guidance in optimization used Perf to profile the algorithm. Ensured memory safety\nusing Valgrind Memcheck sanitizer."}
+          ]},
+      {
+        "title": "React Website",
+        "description": [
+          { "item": "Created implementation of Counter-Factual Regret Minimization algorithm in C++ which develops an optimal strategy for Poker over multiple iterations."},
+          { "item": "Implemented Monte Carlo sampling to improve training time and increase the maximum possible game size for calculation. Represented game tree as a state machine with singletons for game states"},
+          { "item": "Created unit testing Gtest to verify algorithm correctness and tracked performance using Google\nbenchmark. For guidance in optimization used Perf to profile the algorithm. Ensured memory safety\nusing Valgrind Memcheck sanitizer."}
+        ]}
+      ],
     "skills":[
       {
         "name":"Python",

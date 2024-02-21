@@ -46,13 +46,13 @@ class App extends Component {
     return (
         <div className="App">
           <Header data={this.state.resumeData.main} />
-          <About data={this.state.resumeData.main} />
+
           {this.state.resumeData.resume ? ( // Check if resume data exists
               <Resume data={this.state.resumeData.resume} />
           ) : (
               <div>Loading Resume...</div> // Or display a loading indicator
           )}
-          {/* ... rest of your components */}
+          <About data={this.state.resumeData.main} />
         </div>
     );
   }

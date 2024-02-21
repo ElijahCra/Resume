@@ -8,6 +8,7 @@ class Header extends Component {
 
     const project = this.props.data.project;
     const github = this.props.data.github;
+    const linkedin = this.props.data.linkedin;
     const name = this.props.data.name;
     const description = this.props.data.description;
 
@@ -30,15 +31,16 @@ class Header extends Component {
               </a>
             </li>
 
-            <li>
-              <a className="smoothscroll" href="#about">
-                About
-              </a>
-            </li>
 
             <li>
               <a className="smoothscroll" href="#resume">
                 Resume
+              </a>
+            </li>
+
+            <li>
+              <a className="smoothscroll" href="#about">
+                About
               </a>
             </li>
 
@@ -59,7 +61,7 @@ class Header extends Component {
         <div className="row banner">
           <div className="banner-text">
             <Fade bottom>
-              <h1 className="responsive-headline">{name}</h1>
+            <h1 className="responsive-headline">{name}</h1>
             </Fade>
             <Fade bottom duration={1200}>
               <h3>{description}.</h3>
@@ -72,6 +74,9 @@ class Header extends Component {
                 </a>
                 <a href={github} className="button btn github-btn">
                   <i className="fa fa-github"></i>Github
+                </a>
+                <a href={linkedin} className="button btn linkedin-btn">
+                  <i className="fa fa-linkedin"></i>LinkedIn
                 </a>
               </ul>
             </Fade>

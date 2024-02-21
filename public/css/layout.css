@@ -57,7 +57,7 @@ header .banner-text h1 {
    margin: 0 auto 18px auto;
 }
 header .banner-text h3 {
-   font: 18px/1.9em 'librebaskerville-regular', serif;
+   font: 18px/1.9em 'opensans-regular', serif;
    color: #ddd;
    margin: 0 auto;
    width: 70%;
@@ -71,6 +71,13 @@ header .banner-text hr {
    margin: 18px auto 24px auto;
    border-color: #2F2D2E;
    border-color: rgba(150, 150, 150, .1);
+}
+
+
+.social {
+   display: flex; /* Enable flexbox on the container */
+   flex-direction: row; /* Align items horizontally */
+   justify-content: center; /* Distribute space between the buttons */
 }
 
 /* header social links */
@@ -284,7 +291,7 @@ ul#nav li.current a { color: #fe6928; }
 
 
 #resume .info {
-   font: 16px/24px 'librebaskerville-italic', serif;
+   font: 16px/24px 'librebaskerville-bold', sans-serif;
    color: #6E7881;
    margin-bottom: 18px;
    margin-top: 9px;
