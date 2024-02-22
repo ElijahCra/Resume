@@ -98,18 +98,19 @@
     "projects":[
       {
         "title":"CFR Poker Bot",
+        "subtitle": "C++ 20 Implementation of Counter Factual Regret Minimization",
         "description": [
           { "item": "Created implementation of Counter-Factual Regret Minimization algorithm in C++ which develops an optimal strategy for Poker over multiple iterations."},
           { "item": "Implemented Monte Carlo sampling to improve training time and increase the maximum possible game size for calculation. Represented game tree as a state machine with singletons for game states"},
           { "item": "Created unit testing Gtest to verify algorithm correctness and tracked performance using Google\nbenchmark. For guidance in optimization used Perf to profile the algorithm. Ensured memory safety\nusing Valgrind Memcheck sanitizer."}
           ]},
       {
-        "title": "React Website",
+        "title": "This Website",
+        "subtitle": "React, Node 16, AWS",
         "description": [
-          { "item": "Created implementation of Counter-Factual Regret Minimization algorithm in C++ which develops an optimal strategy for Poker over multiple iterations."},
-          { "item": "Implemented Monte Carlo sampling to improve training time and increase the maximum possible game size for calculation. Represented game tree as a state machine with singletons for game states"},
-          { "item": "Created unit testing Gtest to verify algorithm correctness and tracked performance using Google\nbenchmark. For guidance in optimization used Perf to profile the algorithm. Ensured memory safety\nusing Valgrind Memcheck sanitizer."}
-        ]}
+          { "item": "Hosted on AWS S3, served with cloudfront."},
+          { "item": "Visit counter utilizes lambda and dynamoDB."}
+          ]}
       ],
     "skills":[
       {

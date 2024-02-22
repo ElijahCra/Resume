@@ -8,6 +8,7 @@ class Resume extends Component {
         super(props);
         this.state = {
             expandedWorkItems: [],
+            expandedProjectItems: [],
             allExpanded: false
         };
     }
@@ -30,6 +31,12 @@ class Resume extends Component {
     handleMouseEnter = (workIndex) => {
         this.setState(prevState => ({
             expandedWorkItems: [...prevState.expandedWorkItems, workIndex]
+        }));
+    };
+
+    handleProjectMouseEnter = (projectIndex) => {
+        this.setState(prevState => ({
+            expandedProjectItems: [...prevState.expandedProjectItems, projectIndex]
         }));
     };
 
@@ -91,7 +98,30 @@ class Resume extends Component {
           );
       });
 
-      const project = this.props.data.projects
+      const projects = this.props.data.projects.map((projects, projectIndex) => {
+          const isExpanded = this.state.expandedProjectItems.includes(projectIndex) || this.state.allExpanded;
+
+          return (
+              <div
+                  key={projects.title}
+                  onMouseEnter={() => this.handleProjectMouseEnter(projectIndex)}
+                  // onMouseLeave={this.handleMouseLeave} // Removed
+              >
+                  <h3>{projects.title}</h3>
+                  <p className="info">
+                      {projects.subtitle}
+                  </p>
+
+                  <ul style={{ display: isExpanded ? 'block' : 'none' }}>
+                      {projects.description.map((item, itemPIndex) => (
+                          <li key={itemPIndex}>
+                              <span>{item.item}</span>
+                          </li>
+                      ))}
+                  </ul>
+              </div>
+          );
+      });
 
       /*const skills = this.props.data.skills.map((skills) => {
           const backgroundColor = this.getRandomColor();
@@ -124,21 +154,31 @@ class Resume extends Component {
           </div>
         </Slide>
 
-        <Slide left duration={300}>
-          <div className="row work">
-            <div className="three columns header-col">
-              <h1>
-                <span>Work</span>
-              </h1>
-            </div>
+          <Slide left duration={300}>
+              <div className="row work">
+                  <div className="three columns header-col">
+                      <h1>
+                          <span>Work</span>
+                      </h1>
+                  </div>
 
-              <div className="nine columns main-col">
-                  <button onClick={this.handleExpandAll}>Expand All</button>
-                  <button onClick={this.handleCloseAll}>Close All</button>
-                  {work}
+                  <div className="nine columns main-col">
+                      <button onClick={this.handleExpandAll}>Expand All</button>
+                      <button onClick={this.handleCloseAll}>Close All</button>
+                      {work}
+                  </div>
               </div>
-          </div>
-        </Slide>
+              <div className="row projects">
+                  <div className="three columns header-col">
+                      <h1>
+                          <span>Projects</span>
+                      </h1>
+                  </div>
+                  <div className="nine columns main-col">
+                      {projects}
+                  </div>
+              </div>
+          </Slide>
 
           {/*<Slide left duration={300}>
               <div className="row skill">
