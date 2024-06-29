@@ -51,3 +51,9 @@ tsconfig.tsbuildinfo
 
 # Contentlayer
 .contentlayer
+/.idea/.gitignore
+/.idea/modules.xml
+/.husky/pre-commit
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/ResumeReact.iml
+/.idea/vcs.xml
