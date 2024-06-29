@@ -23,7 +23,7 @@ jobs:
         run: bun install && bun run build
 
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: ${{ secrets.AWS_ARN }}
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
