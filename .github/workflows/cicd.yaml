@@ -20,7 +20,7 @@ jobs:
           bun-version: latest
 
       - name: Build
-        run: bun install && next build
+        run: bun install && bun run build
 
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v3
