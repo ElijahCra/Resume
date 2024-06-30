@@ -6,8 +6,6 @@ import resumeConfig from '../../edit-me/config/resumeConfig';
 
 // STYLES
 import { personal } from '@content';
-import { headers } from 'next/headers';
-import { protocol, vercelURL } from 'src/helpers/env';
 import { fullName } from 'src/helpers/utils';
 import { twMerge } from 'tailwind-merge';
 import { ThemeSetting } from '../../edit-me/types/Config';
@@ -27,39 +25,36 @@ const jetBrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 });
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  const host = headers().get('host');
-  const baseURL = `${protocol}://${host || vercelURL}`;
-  const siteName = `${fullName} Professional Résumé`;
-  const title = `Résumé | ${fullName} | Somewhere`;
-  const description = `Professional résumé for ${fullName}.`;
 
-  return {
-    metadataBase: new URL(baseURL),
-    applicationName: siteName,
-    authors: { name: fullName },
+const baseURL = `https://elijahcrain.com`;
+const siteName = `${fullName} Professional Résumé`;
+const title = `Résumé | ${fullName} | Somewhere`;
+const description = `Professional résumé for ${fullName}.`;
+export const metadata: Metadata = {
+  metadataBase: new URL(baseURL),
+  applicationName: siteName,
+  authors: { name: fullName },
+  creator: fullName,
+  description,
+  generator: 'Next.js',
+  keywords: ['resume', fullName, 'next.js', 'pdf'],
+  openGraph: {
+    type: 'profile',
+    firstName: personal.givenName,
+    lastName: personal.familyName,
+    title,
+    description,
+    siteName,
+    url: baseURL,
+  },
+  title,
+  twitter: {
+    site: siteName,
     creator: fullName,
     description,
-    generator: 'Next.js',
-    keywords: ['resume', fullName, 'next.js', 'pdf'],
-    openGraph: {
-      type: 'profile',
-      firstName: personal.givenName,
-      lastName: personal.familyName,
-      title,
-      description,
-      siteName,
-      url: baseURL,
-    },
     title,
-    twitter: {
-      site: siteName,
-      creator: fullName,
-      description,
-      title,
-    },
-  };
-};
+  },
+}
 
 export const viewport: Viewport = {
   initialScale: 1,
