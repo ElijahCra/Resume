@@ -18,7 +18,7 @@ export default function Error({ error }: { error: Error }) {
         </Heading>
 
         <div className="mt-4">
-          <Link href="/">Visit public résumé</Link>
+          <Link href="/">Visit public resume</Link>
         </div>
       </div>
     </div>

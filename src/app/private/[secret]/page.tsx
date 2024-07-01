@@ -1,5 +1,4 @@
 import {allPrivateFields} from '@content';
-import {notFound} from 'next/navigation';
 import AboutMe from 'src/components/Articles/AboutMe';
 import Achievements from 'src/components/Articles/Achievements';
 import {AdditionalInfo} from 'src/components/Articles/AdditionalInfo';
@@ -19,7 +18,7 @@ export async function generateStaticParams() {
 export default function Page({ params }: { params: { secret: string } }) {
   // If the secret isn't in the approved list, show a 404
   if (!approvedSecrets.includes(params.secret)) {
-    notFound();
+    return
   }
 
   return (

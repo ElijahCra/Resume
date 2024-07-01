@@ -27,9 +27,9 @@ const jetBrainsMono = JetBrains_Mono({
 
 
 const baseURL = `https://elijahcrain.com`;
-const siteName = `${fullName} Professional Résumé`;
-const title = `Résumé | ${fullName} | Somewhere`;
-const description = `Professional résumé for ${fullName}.`;
+const siteName = `${fullName}.com`;
+const title = `${fullName}.com | Resume`;
+const description = `Resume for ${fullName}.`;
 export const metadata: Metadata = {
   metadataBase: new URL(baseURL),
   applicationName: siteName,
